@@ -1,0 +1,44 @@
+{% extends 'controle/base.html' %}
+{% block conteudo %}
+<form action="{% url 'listagem_itens' %}" method="post">
+      {% csrf_token %}
+      <div style="text-align: center;" class="container">
+        <h1>Cadastro de Itens</h1>
+        
+        <table class="table table-bordered table-striped">
+          <tr>
+              <th>Nome <input name="nome" class="form-control-sm" type="text"></th>
+              <th>Quantidade <input name="quantidade" class="form-control-sm" type="text"></th>
+              <th>Unidade <input name="unidade" class="form-control-sm" type="text"></th>
+              <th>Validade <input name="validade" class="form-control-sm" type="text"></th>
+          </tr>
+      </table>
+
+     
+        <button class="form-control-sm">Adicionar/Listar Itens</button>
+        </div>
+    </form>
+
+    <div class="container">
+      <h1>Itens Cadastrados:</h1>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <!--<th>Identificação</th>-->
+              <th>Nome</th>
+              <th>Quantidade</th>
+              <th>Unidade</th>
+              <th>Validade</th>
+          </tr>
+          {% for item in itens %}
+          <tr>
+              <!--<td>{{item.id_item}}</td>-->
+              <td>{{item.nome}}</td>
+              <td>{{item.quantidade}}</td>
+              <td>{{item.unidade}}</td>
+              <td>{{item.validade}}</td>
+          </tr>
+          {% endfor %}
+      </table>
+  
+  </div>
+    {% endblock %}
